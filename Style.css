@@ -1,0 +1,236 @@
+/* ---------- Variáveis (cores e medidas reutilizáveis) ---------- */
+:root {
+  --fundo: #e8eef4;
+  --cartao: #ffffff;
+  --texto: #14212b;
+  --texto-suave: #5d6e7d;
+  --destaque: #2a55f5;
+  --destaque-escuro: #1d3fc4;
+  --borda: #d3dde6;
+  --perigo: #b83232;
+  --raio: 12px;
+}
+
+/* ---------- Reset básico ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  min-height: 100vh;
+  /* Flexbox para centralizar o cartão na tela */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 16px;
+}
+
+/* Texto só para leitores de tela (acessibilidade) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- Cartão principal ---------- */
+.app {
+  width: 100%;
+  max-width: 520px;
+  background: var(--cartao);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 12px 40px rgba(20, 33, 43, 0.12);
+}
+
+.app__topo h1 {
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.app__resumo {
+  margin-top: 4px;
+  color: var(--texto-suave);
+}
+
+/* Barra de progresso: o elemento marcante do projeto */
+.progresso {
+  margin-top: 16px;
+  height: 10px;
+  background: var(--fundo);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progresso__barra {
+  height: 100%;
+  width: 0%;
+  background: var(--destaque);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ---------- Formulário ---------- */
+.formulario {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.formulario input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 2px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+.formulario input:focus,
+button:focus-visible,
+.lista input[type="checkbox"]:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+.formulario button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: var(--destaque);
+  border: none;
+  border-radius: var(--raio);
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background: var(--destaque-escuro);
+}
+
+.erro {
+  min-height: 1.4em;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--perigo);
+}
+
+/* ---------- Filtros ---------- */
+.filtros {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.filtro {
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  background: transparent;
+  border: 2px solid var(--borda);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.filtro--ativo {
+  color: #fff;
+  background: var(--texto);
+  border-color: var(--texto);
+}
+
+/* ---------- Lista ---------- */
+.lista {
+  list-style: none;
+}
+
+.lista li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.lista input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--destaque);
+  cursor: pointer;
+}
+
+.lista .texto {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+/* Classe adicionada pelo JavaScript com classList */
+.lista li.concluida .texto {
+  color: var(--texto-suave);
+  text-decoration: line-through;
+}
+
+.lista .remover {
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--texto-suave);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.lista .remover:hover {
+  color: var(--perigo);
+}
+
+.vazio {
+  padding: 24px 0;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+/* ---------- Rodapé ---------- */
+.app__rodape {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.link-botao {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-botao:hover {
+  color: var(--perigo);
+}
+
+/* ---------- Responsivo (media query) ---------- */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 8px;
+  }
+
+  .app {
+    padding: 20px;
+  }
+
+  .formulario {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progresso__barra {
+    transition: none;
+  }
+}

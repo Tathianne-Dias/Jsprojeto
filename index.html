@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"content= "Lista de tarefas com HTML, CSS e JavaScript puro.">
+    <title>Lista de tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app">
+<header class="app__topo">
+    <h1>Minhas tarefas</h1>
+    <p id "resumo" class="app__resumo">Nenhuma tarefa ainda.</p>
+    <div class="progresso" aria-hidden="true">
+        <div id "barra" class="progresso__barra"></div>
+    </div>
+</header>
+
+<form id="formulario" class="formulario">
+    <label for="entrada" class="sr-only">Nova tarefa</label>
+    <input id="entrada" type="text" placeholder="O que você precisa fazer?" maxlength="80" autocomplete="off">
+    <button type="submit">Adicionar</button>
+</form>
+<p id="erro" role="alert"></p>
+
+
+<section aria-label="Filtros" class="filtros">
+    <button class="filtro filtro--ativo" data-filtros="todas"></button>
+    <button class="filtro" data-filtro="pendentes">Pendentes</button>
+    <button class="filtro" data-filtro="concluidas">Concluidas</button>
+</section>
+
+<section aria-label="Lista de tarefas">
+    <ul id="lista" class="lista"></ul
+    <p id="vazio" class="vazio"> Sua lista está vazia. Digite uma tarefa acima e clique em adicionar.</p>
+</section>
+
+
+<footer class="app__rodape">
+    <button id="limpar" class="link-botao"> Remover concluídas</button>
+</footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
